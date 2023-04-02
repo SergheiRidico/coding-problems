@@ -5,3 +5,7 @@
 
 # Mac
 .DS_Store
+
+# Java & Kotlin
+*.class
+*.jar
