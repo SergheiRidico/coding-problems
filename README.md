@@ -26,8 +26,7 @@ go run code.go [arguments...]
 TypeScript
 ```shell
 cd /problems/{problem_name}/typescript
-tsc code.ts
-node code.js [arguments...]
+ts-node code.ts [arguments...]
 ```
 
 Bash
