@@ -43,7 +43,7 @@ fun findThreeLargestDistinctNumbers(array: IntArray) {
         return
     }
 
-    println("First largest distinct number: $first")
-    println("Second largest distinct number: $second")
-    println("Third largest distinct number: $third")
+    println("First largest distinct number is: $first")
+    println("Second largest distinct number is: $second")
+    println("Third largest distinct number is: $third")
 }
