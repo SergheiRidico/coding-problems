@@ -5,7 +5,7 @@ args=(1 2 3 4 5 99 13 87 43 43)
 if (($# < 2)); then
   echo "Number of input arguments is less then 2! Default array is used: ${args[*]}"
   else
-    args=($@)
+    args=("${@}")
 fi
 
 find_maximums() {
