@@ -8,28 +8,27 @@ import (
 )
 
 func main() {
-	array := []int{99, 82, -34, 3, 15, 76, 102, 14, 82, 82, 99}
+	array := []int{-85, 22, 0, 12, 15, 15, -54, 87, 64, 28}
 
-	// Argument with index zero is always program name
 	args := os.Args[1:]
 
-	if len(args) < 2 {
-		fmt.Println("Number of input arguments is less then 2! Default array is used:")
+	if len(args) < 3 {
+		fmt.Println("Number of input arguments is less then 3! Default array is used:")
 		fmt.Println(array)
 	} else {
 		fmt.Println(args)
 
-		var array2 []int
+		var parsedArray []int
 
 		for i := 0; i < len(args); i++ {
 			num, err := strconv.Atoi(args[i])
 			if err != nil {
 				panic(err)
 			}
-			array2 = append(array2, num)
+			parsedArray = append(parsedArray, num)
 		}
 
-		array = array2
+		array = parsedArray
 	}
 
 	findMaximums(array)
@@ -38,18 +37,24 @@ func main() {
 func findMaximums(array []int) {
 	firstMaximum := math.MinInt
 	secondMaximum := math.MinInt
+	thirdMaximum := math.MinInt
 
 	for i := 0; i < len(array); i++ {
-		if array[i] > firstMaximum {
+		var temp = array[i]
+		if temp > firstMaximum {
+			thirdMaximum = secondMaximum
 			secondMaximum = firstMaximum
-			firstMaximum = array[i]
-		} else if array[i] < firstMaximum && array[i] > secondMaximum {
-			secondMaximum = array[i]
+			firstMaximum = temp
+		} else if temp < firstMaximum && temp > secondMaximum {
+			thirdMaximum = secondMaximum
+			secondMaximum = temp
+		} else if temp < secondMaximum && temp > thirdMaximum {
+			thirdMaximum = temp
 		}
 	}
 
-	if secondMaximum == math.MinInt {
-		println("There is no second largest number in array. \n" +
+	if thirdMaximum == math.MinInt {
+		println("There are no three distinct numbers in array. \n" +
 			"Or array contains minimal integer value: -9223372036854775808. \n" +
 			"Or it contains only duplicates. \n" +
 			"Please try again with another input!")
@@ -58,4 +63,5 @@ func findMaximums(array []int) {
 
 	fmt.Printf("First maximum is: %v\n", firstMaximum)
 	fmt.Printf("Second maximum is: %v\n", secondMaximum)
+	fmt.Printf("Third maximum is: %v\n", thirdMaximum)
 }
